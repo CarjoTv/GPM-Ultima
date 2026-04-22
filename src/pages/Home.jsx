@@ -18,10 +18,10 @@ export default function Home() {
       color: 'bg-primary text-tertiary'
     },
     {
-      title: 'Seguro de Carro',
+      title: 'Seguro de Auto',
       description: 'Protección total en la carretera con asistencia en viaje nacional e internacional.',
       icon: Car,
-      path: '/seguro-carro',
+      path: '/seguro-auto',
       color: 'bg-primary text-tertiary'
     },
     {
@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full bg-neutral">
-      <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden py-20 md:py-32">
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center overflow-hidden py-16 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
             src="https://picsum.photos/seed/gpm_hero/1920/1080"
@@ -51,26 +51,26 @@ export default function Home() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="max-w-2xl"
+            className="max-w-xl md:max-w-2xl"
           >
-            <span className="inline-block py-1 px-4 rounded-lg bg-tertiary/20 text-primary text-[10px] md:text-xs font-bold uppercase tracking-wider mb-8 border border-tertiary/30">
+            <span className="inline-block py-1 px-3 md:px-4 rounded-lg bg-tertiary/20 text-primary text-[9px] md:text-xs font-bold uppercase tracking-wider mb-6 md:mb-8 border border-tertiary/30">
               GPM - Excelencia Patrimonial
             </span>
-            <h1 className="text-5xl md:text-8xl font-black text-primary leading-[0.85] mb-8 font-headline tracking-tighter">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-primary leading-[0.9] mb-6 md:mb-8 font-headline tracking-tighter">
               SU FUTURO <br /><span className="text-tertiary">NUESTRA PRIORIDAD</span>
             </h1>
-            <p className="text-lg md:text-xl text-secondary mb-12 leading-relaxed font-medium max-w-xl">
+            <p className="text-base md:text-lg lg:text-xl text-secondary mb-8 md:mb-12 leading-relaxed font-medium max-w-md md:max-w-xl">
               GPM (Grupo Patrimonial Mexicano): Más de 25 años brindando solidez, confianza y protección integral a las familias y empresas más importantes de México.
             </p>
-            <div className="flex flex-wrap gap-5">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-5">
               <Link
                 to="/contacto"
-                className="bg-primary text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-secondary transition-all flex items-center gap-3 group shadow-2xl shadow-primary/20"
+                className="bg-primary text-white px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-secondary transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-primary/20"
               >
                 Solicitar Cotización
                 <ArrowRight className="h-5 w-5 text-tertiary group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="bg-white text-primary border border-primary/10 px-8 md:px-10 py-4 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-neutral transition-all shadow-lg">
+              <button className="bg-white text-primary border border-primary/10 px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-neutral transition-all shadow-lg">
                 Nuestros Planes
               </button>
             </div>
@@ -80,16 +80,16 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-wrap gap-6 md:gap-10"
+            className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-10"
           >
             {[
               { label: 'Clientes satisfechos', value: '+15,000' },
               { label: 'Efectividad en Siniestros', value: '100%' },
               { label: 'Asistencia VIP', value: '24/7' }
             ].map((stat, i) => (
-              <div key={i} className="bg-primary p-6 md:p-8 rounded-[2rem] shadow-2xl border border-white/5 flex flex-col items-center md:items-start min-w-[180px] group hover:border-tertiary/30 transition-all">
-                <p className="text-2xl md:text-3xl font-black text-tertiary mb-1 font-headline tracking-tighter">{stat.value}</p>
-                <p className="text-[9px] md:text-xs text-white/40 font-bold uppercase tracking-[0.2em]">{stat.label}</p>
+              <div key={i} className="bg-primary p-4 md:p-8 rounded-[2rem] shadow-2xl border border-white/5 flex flex-col items-center md:items-start min-w-[140px] md:min-w-[180px] group hover:border-tertiary/30 transition-all">
+                <p className="text-xl md:text-3xl font-black text-tertiary mb-1 font-headline tracking-tighter">{stat.value}</p>
+                <p className="text-[8px] md:text-xs text-white/40 font-bold uppercase tracking-[0.2em]">{stat.label}</p>
               </div>
             ))}
           </motion.div>
@@ -107,7 +107,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {services.map((item, index) => (
             <motion.div
               key={index}
@@ -115,13 +115,13 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
-              className="bg-neutral p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 group border border-primary/5"
+              className="bg-neutral p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 group border border-primary/5"
             >
-              <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
-                <item.icon className="h-8 w-8" />
+              <div className={`w-12 h-12 md:w-16 md:h-16 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                <item.icon className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="text-2xl font-extrabold text-primary mb-4 font-headline">{item.title}</h3>
-              <p className="text-secondary mb-8 text-sm leading-relaxed font-medium">
+              <h3 className="text-xl md:text-2xl font-extrabold text-primary mb-3 md:mb-4 font-headline">{item.title}</h3>
+              <p className="text-secondary mb-6 md:mb-8 text-sm leading-relaxed font-medium">
                 {item.description}
               </p>
               <Link

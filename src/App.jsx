@@ -28,7 +28,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/seguro-medico" element={<MedicalInsurance />} />
-            <Route path="/seguro-carro" element={<CarInsurance />} />
+            <Route path="/seguro-auto" element={<CarInsurance />} />
             <Route path="/contacto" element={<Contact />} />
           </Routes>
         </main>

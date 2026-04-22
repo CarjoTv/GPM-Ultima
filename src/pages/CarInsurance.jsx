@@ -26,7 +26,7 @@ export default function CarInsurance() {
 
   return (
     <div className="flex flex-col w-full bg-neutral">
-      <section className="bg-primary py-24 relative overflow-hidden">
+      <section className="bg-primary py-20 md:py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           <img
             src="https://picsum.photos/seed/luxury_drive/1920/1080"
@@ -42,10 +42,10 @@ export default function CarInsurance() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="bg-tertiary p-4 rounded-2xl mb-8 inline-flex shadow-xl shadow-tertiary/20">
-                <Car className="h-8 w-8 text-primary" />
+              <div className="bg-tertiary p-3 md:p-4 rounded-2xl mb-6 md:mb-8 inline-flex shadow-xl shadow-tertiary/20">
+                <Car className="h-6 w-6 md:h-8 md:w-8 text-primary" />
               </div>
-              <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-8 leading-[1] font-headline">
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white mb-6 md:mb-8 leading-[1] font-headline">
                 Domina la carretera <br /><span className="text-tertiary">CON SEGURIDAD</span>
               </h1>
               <p className="text-xl text-white/70 mb-10 leading-relaxed font-medium">
@@ -64,7 +64,7 @@ export default function CarInsurance() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="relative h-[450px]"
+              className="relative h-[300px] md:h-[450px]"
             >
               <img
                 src="https://picsum.photos/seed/luxury_car_ins/800/600"
@@ -95,7 +95,7 @@ export default function CarInsurance() {
           </p>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {coverageFeatures.map((coverage, i) => (
             <motion.div
               key={i}
@@ -103,13 +103,13 @@ export default function CarInsurance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-neutral p-12 rounded-[3rem] border border-primary/5 hover:border-tertiary/40 hover:bg-white hover:shadow-3xl transition-all duration-500 group"
+              className="bg-neutral p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-primary/5 hover:border-tertiary/40 hover:bg-white hover:shadow-3xl transition-all duration-500 group"
             >
-              <div className="bg-primary w-16 h-16 rounded-2xl shadow-xl flex items-center justify-center mb-10 border border-white/10 group-hover:scale-110 transition-transform">
-                <coverage.icon className="h-8 w-8 text-tertiary" />
+              <div className="bg-primary w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl shadow-xl flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 transition-transform">
+                <coverage.icon className="h-6 w-6 md:h-8 md:w-8 text-tertiary" />
               </div>
-              <h3 className="text-3xl font-black text-primary mb-6 font-headline uppercase tracking-tighter">{coverage.title}</h3>
-              <p className="text-secondary mb-10 text-sm leading-relaxed font-semibold">{coverage.desc}</p>
+              <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 md:mb-6 font-headline uppercase tracking-tighter">{coverage.title}</h3>
+              <p className="text-secondary mb-8 md:mb-10 text-sm leading-relaxed font-semibold">{coverage.desc}</p>
               <ul className="space-y-6 mb-10">
                 {coverage.items.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-4 text-sm font-medium text-secondary text-left">
@@ -134,10 +134,10 @@ export default function CarInsurance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div>
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-12 leading-[1.1] font-headline tracking-tighter">
+              <h2 className="text-3xl md:text-4xl lg:text-6xl font-extrabold mb-8 md:mb-12 leading-[1.1] font-headline tracking-tighter">
                 Estamos contigo en cada <span className="text-tertiary">kilómetro</span> del camino
               </h2>
-              <div className="grid grid-cols-2 gap-12">
+              <div className="grid grid-cols-2 gap-6 md:gap-12">
                 {[
                   { label: 'Talleres de red VIP', val: '+3,500' },
                   { label: 'Países Cubiertos', val: '62' },

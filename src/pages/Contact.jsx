@@ -17,7 +17,7 @@ export default function Contact() {
 
   return (
     <div className="flex flex-col w-full pb-24 bg-neutral">
-      <section className="bg-primary py-24 mb-24 text-center relative overflow-hidden">
+      <section className="bg-primary py-16 md:py-24 mb-16 md:mb-24 text-center relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_var(--color-tertiary)_0%,_transparent_70%)] opacity-5"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <motion.div
@@ -33,15 +33,15 @@ export default function Contact() {
       </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="space-y-16"
+            className="space-y-12 md:space-y-16"
           >
             <div>
-              <h2 className="text-3xl font-extrabold text-primary mb-12 font-headline uppercase tracking-tight">Canales de Atención</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-primary mb-8 md:mb-12 font-headline uppercase tracking-tight">Canales de Atención</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
                 <div className="flex flex-col gap-6">
                   <div className="bg-primary w-14 h-14 rounded-2xl flex items-center justify-center text-tertiary shadow-2xl border border-white/5">
                     <Phone className="h-7 w-7" />

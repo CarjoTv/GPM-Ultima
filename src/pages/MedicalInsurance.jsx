@@ -35,7 +35,7 @@ export default function MedicalInsurance() {
 
   return (
     <div className="flex flex-col w-full bg-neutral">
-      <section className="bg-primary pt-24 pb-32 relative overflow-hidden">
+      <section className="bg-primary pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-tertiary/10 rounded-full blur-[100px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

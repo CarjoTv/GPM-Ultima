@@ -51,7 +51,7 @@ export default function Footer() {
                 <Link to="/seguro-medico" className="hover:text-tertiary transition-colors">Seguro Médico</Link>
               </li>
               <li>
-                <Link to="/seguro-carro" className="hover:text-tertiary transition-colors">Seguro de Carro</Link>
+                <Link to="/seguro-auto" className="hover:text-tertiary transition-colors">Seguro de Auto</Link>
               </li>
               <li>
                 <Link to="/contacto" className="hover:text-tertiary transition-colors">Contacto</Link>
