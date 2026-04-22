@@ -1,0 +1,39 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import MedicalInsurance from './pages/MedicalInsurance';
+import CarInsurance from './pages/CarInsurance';
+import Contact from './pages/Contact';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  
+  return null;
+}
+
+export default function App() {
+  return (
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen bg-white flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
+        <Header />
+        <main className="grow pt-[72px]">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/seguro-medico" element={<MedicalInsurance />} />
+            <Route path="/seguro-carro" element={<CarInsurance />} />
+            <Route path="/contacto" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
+}
