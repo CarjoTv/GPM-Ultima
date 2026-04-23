@@ -5,16 +5,20 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-headline: "Manrope", sans-serif;
   
-  --color-primary: #00234E;
-  --color-secondary: #6E778C;
-  --color-tertiary: #C5A059;
-  --color-neutral: #F8F9FA;
+  --color-primary: #0A1F44;
+  --color-secondary: #C5A059;
+  --color-tertiary: #F5F0E1;
+  --color-neutral: #F5F0E1;
+  --color-light-beige: #E9E1D2;
+  --color-charcoal: #1A1A1A;
+  --color-lighter-navy: #2A436A;
   
-  /* Overriding standard brand colors to match the rubric */
-  --color-blue-600: #00234E;
-  --color-blue-700: #001a3a;
-  --color-blue-50: #f0f4f8;
-  --color-gold-500: #C5A059;
+  --color-navy: #0A1F44;
+  --color-gold: #C5A059;
+  --color-off-white: #F5F0E1;
+  --color-beige: #E9E1D2;
+  --color-charcoal: #1A1A1A;
+  --color-lighter-navy: #2A436A;
 }
 
 @layer base {

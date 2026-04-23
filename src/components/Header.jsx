@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Shield, Phone } from 'lucide-react';
+import { Menu, X, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import logo from '../img/logo (2) (1).png';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,26 +29,17 @@ export default function Header() {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-2 md:py-3' : 'bg-white md:bg-transparent py-3 md:py-5'
+        scrolled ? 'bg-off-white/95 backdrop-blur-md shadow-sm py-2 md:py-3' : 'bg-off-white py-3 md:py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <div className="bg-primary p-2 rounded-lg group-hover:bg-secondary transition-colors duration-300 shadow-lg shadow-primary/20">
-                <Shield className="h-7 w-7 text-tertiary" />
-              </div>
-              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-tertiary rounded-full border-2 border-white"></div>
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-black tracking-tighter font-headline text-primary">
-                GPM
-              </span>
-              <span className="text-[8px] uppercase font-bold tracking-[0.2em] text-secondary">
-                Grupo Patrimonial Mexicano
-              </span>
-            </div>
+          <Link to="/" className="flex items-center gap-3 group">
+            <img 
+              src={logo} 
+              alt="GPM - Grupo Patrimonial Mexicano" 
+              className="h-16 w-auto object-contain"
+            />
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -55,8 +47,8 @@ export default function Header() {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-semibold transition-colors hover:text-tertiary ${
-                  isActive(link.path) ? 'text-primary border-b-2 border-tertiary' : 'text-secondary'
+                className={`text-sm font-semibold transition-colors hover:text-secondary ${
+                  isActive(link.path) ? 'text-primary border-b-2 border-secondary' : 'text-charcoal'
                 }`}
               >
                 {link.name}
@@ -64,9 +56,9 @@ export default function Header() {
             ))}
             <Link
               to="/contacto"
-              className="bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-secondary hover:translate-y-[-1px] transition-all flex items-center gap-2 shadow-lg shadow-primary/10"
+              className="bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-lighter-navy hover:translate-y-[-1px] transition-all flex items-center gap-2 shadow-lg shadow-primary/20"
             >
-              <Phone className="h-4 w-4 text-tertiary" />
+              <Phone className="h-4 w-4 text-secondary" />
               Llámanos
             </Link>
           </div>
@@ -74,7 +66,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-gray-600 hover:text-blue-600 transition-colors"
+              className="p-2 text-charcoal hover:text-primary transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -88,7 +80,7 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-b border-gray-100 overflow-hidden"
+            className="md:hidden bg-off-white border-b border-beige overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
               {navLinks.map((link) => (
@@ -97,7 +89,7 @@ export default function Header() {
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={`block px-3 py-4 text-base font-medium rounded-lg transition-colors ${
-                    isActive(link.path) ? 'bg-blue-50 text-blue-600' : 'text-gray-600 hover:bg-gray-50'
+                    isActive(link.path) ? 'bg-beige text-primary' : 'text-charcoal hover:bg-beige'
                   }`}
                 >
                   {link.name}
@@ -106,7 +98,7 @@ export default function Header() {
               <Link
                 to="/contacto"
                 onClick={() => setIsOpen(false)}
-                className="mt-4 w-full bg-blue-600 text-white px-4 py-3 rounded-lg text-center font-medium flex items-center justify-center gap-2"
+                className="mt-4 w-full bg-primary text-white px-4 py-3 rounded-lg text-center font-medium flex items-center justify-center gap-2"
               >
                 <Phone className="h-5 w-5" />
                 Hablar con un asesor
