@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import MedicalInsurance from './pages/MedicalInsurance';
 import CarInsurance from './pages/CarInsurance';
 import Contact from './pages/Contact';
+import Citas from './pages/Citas';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -30,6 +31,7 @@ export default function App() {
             <Route path="/seguro-medico" element={<MedicalInsurance />} />
             <Route path="/seguro-auto" element={<CarInsurance />} />
             <Route path="/contacto" element={<Contact />} />
+            <Route path="/citas" element={<Citas />} />
           </Routes>
         </main>
         <Footer />
