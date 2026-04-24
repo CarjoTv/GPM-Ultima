@@ -1,45 +1,13 @@
 import { motion } from 'motion/react';
 import { InlineWidget } from 'react-calendly';
-import { Calendar, ArrowRight, Phone, MessageCircle, Video, Users, Briefcase, Shield, Car } from 'lucide-react';
+import { Calendar, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const contactInfo = {
   whatsapp: '+5216672524470'
 };
 
-const consultationTypes = [
-  { 
-    name: 'Seguro Médico Premium', 
-    duration: '30 min', 
-    icon: Shield,
-    desc: 'Cobertura integral para ti y tu familia'
-  },
-  { 
-    name: 'Seguro de Auto Élite', 
-    duration: '30 min', 
-    icon: Car,
-    desc: 'Protección total en la carretera'
-  },
-  { 
-    name: 'Protección Patrimonial', 
-    duration: '45 min', 
-    icon: Briefcase,
-    desc: 'Planificación financiera y遗产'
-  },
-  { 
-    name: 'Consulta Corporativa', 
-    duration: '60 min', 
-    icon: Users,
-    desc: 'Soluciones para empresas'
-  }
-];
-
 export default function Citas() {
-  const handleWhatsAppClick = (type) => {
-    const message = `Hola! Me interesa agendar una cita para${type}. ¿Cuáles son los horarios disponibles?`;
-    window.open(`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
-  };
-
   return (
     <div className="flex flex-col w-full pb-24 bg-off-white">
       <section className="bg-primary py-16 md:py-24 mb-16 md:mb-24 text-center relative overflow-hidden">
@@ -55,7 +23,7 @@ export default function Citas() {
               AGENDA <span className="text-gold">TU CITA</span>
             </h1>
             <p className="text-xl text-white/70 leading-relaxed font-medium max-w-xl mx-auto">
-              Reserva una consulta personalizada con nuestros asesores especializados en seguros y protección patrimonial.
+              Reserva una consulta personalizada con nuestros asesores especializados.
             </p>
           </motion.div>
         </div>
@@ -108,7 +76,7 @@ export default function Citas() {
                 Agendar por WhatsApp
               </a>
               <p className="text-charcoal/50 text-xs text-center mt-4">
-                Respuesta inmediata enHorario laboral
+                Respuesta inmediata en horario laboral
               </p>
             </div>
 
@@ -125,7 +93,7 @@ export default function Citas() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="lg:col-span-8 space-y-8"
+            className="lg:col-span-8"
           >
             <div className="bg-white rounded-[2.5rem] shadow-4xl border border-primary/5 overflow-hidden">
               <InlineWidget 
@@ -142,39 +110,6 @@ export default function Citas() {
               Powered by Calendly
             </p>
           </motion.div>
-        </div>
-
-        <div className="mt-16">
-          <h2 className="text-2xl md:text-3xl font-black text-primary mb-8 text-center font-headline">
-            Tipos de Consulta Disponibles
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {consultationTypes.map((type, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-beige p-6 rounded-[2rem] shadow-sm hover:shadow-2xl transition-all border border-primary/5"
-              >
-                <div className="bg-primary w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-                  <type.icon className="h-6 w-6 text-gold" />
-                </div>
-                <h3 className="text-lg font-extrabold text-primary mb-2">{type.name}</h3>
-                <p className="text-charcoal/70 text-sm mb-4">{type.desc}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-primary text-sm font-bold">{type.duration}</span>
-                  <button 
-                    onClick={() => handleWhatsAppClick(type.name)}
-                    className="text-green-500 text-sm font-bold hover:underline flex items-center gap-1"
-                  >
-                    <Phone className="h-4 w-4" />
-                    Agendar
-                  </button>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </div>
     </div>
