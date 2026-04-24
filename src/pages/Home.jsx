@@ -1,8 +1,16 @@
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, HeartPulse, Car, Headphones, ChevronRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ShieldCheck, HeartPulse, Car, Headphones, ChevronRight, CheckCircle2, Phone, MessageCircle, Calendar, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+const contactInfo = {
+  whatsapp: '+5216672524470'
+};
+
 export default function Home() {
+  const handleWhatsAppClick = () => {
+    window.open(`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20quisiera%20información%20sobre%20seguros`, '_blank');
+  };
+
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
@@ -35,10 +43,19 @@ export default function Home() {
 
   return (
     <div className="flex flex-col w-full bg-off-white">
+      <a
+        href={`https://wa.me/${contactInfo.whatsapp}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110"
+      >
+        <Phone className="h-6 w-6" />
+      </a>
+
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center overflow-hidden py-16 md:py-32">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/gpm_hero/1920/1080"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop"
             alt="Oficina moderna GPM"
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -70,8 +87,12 @@ export default function Home() {
                 Solicitar Cotización
                 <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="bg-white/10 text-white border border-white/20 px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-gold hover:text-primary hover:border-gold/50 transition-all shadow-lg backdrop-blur-sm">
-                Nuestros Planes
+              <button
+                onClick={handleWhatsAppClick}
+                className="bg-green-500 text-white px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-green-600 transition-all flex items-center justify-center gap-3 shadow-lg"
+              >
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
               </button>
             </div>
           </motion.div>
@@ -96,11 +117,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-32 bg-off-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-20">
+      <section className="py-20 md:py-32 bg-off-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 md:mb-20">
           <motion.div {...fadeInUp}>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6 font-headline tracking-tight">Servicios Especializados</h2>
-            <div className="h-1.5 w-24 bg-gold mx-auto rounded-full mb-8"></div>
+            <h2 className="text-3xl md:text-5xl font-black text-primary mb-4 font-headline tracking-tight">Servicios Especializados</h2>
+            <div className="h-1.5 w-24 bg-gold mx-auto rounded-full mb-6"></div>
             <p className="text-charcoal/70 max-w-2xl mx-auto font-medium text-lg">
               Soluciones integrales diseñadas con los más altos estándares de calidad y protección.
             </p>
@@ -120,13 +141,13 @@ export default function Home() {
               <div className={`w-12 h-12 md:w-16 md:h-16 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
                 <item.icon className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="text-xl md:text-2xl font-extrabold text-primary mb-3 md:mb-4 font-headline">{item.title}</h3>
+              <h3 className="text-xl md:text-2xl font-black text-primary mb-3 md:mb-4 font-headline">{item.title}</h3>
               <p className="text-charcoal/70 mb-6 md:mb-8 text-sm leading-relaxed font-medium">
                 {item.description}
               </p>
               <Link
                 to={item.path}
-                className="text-primary text-sm font-extrabold flex items-center gap-2 group-hover:gap-3 transition-all uppercase tracking-widest"
+                className="text-primary text-sm font-black flex items-center gap-2 group-hover:gap-3 transition-all uppercase tracking-widest"
               >
                 Más información <ChevronRight className="h-4 w-4 text-gold" />
               </Link>
@@ -135,12 +156,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-32 bg-primary relative overflow-hidden">
+      <section className="py-20 md:py-32 bg-primary relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gold rounded-full blur-[120px]"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -148,13 +169,13 @@ export default function Home() {
               className="relative"
             >
               <img
-                src="https://picsum.photos/seed/insurance_trusted/1000/1000"
+                src="https://images.unsplash.com/photo-1450101499163-c88446351960?w=1000&h=1000&fit=crop"
                 alt="Seguridad y Confianza"
-                className="rounded-[3rem] shadow-3xl grayscale hover:grayscale-0 transition-all duration-700"
+                className="rounded-[2rem] md:rounded-[3rem] shadow-3xl"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute -bottom-10 -right-10 bg-gold text-primary p-12 rounded-[2.5rem] shadow-2xl hidden lg:block">
-                <p className="text-6xl font-black font-headline">25+</p>
+              <div className="absolute -bottom-6 -right-6 bg-gold text-primary p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl hidden lg:block">
+                <p className="text-5xl md:text-6xl font-black font-headline">25+</p>
                 <p className="font-bold uppercase tracking-widest text-xs mt-2">Años de excelencia</p>
               </div>
             </motion.div>
@@ -164,33 +185,34 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-12 leading-[1.1] font-headline">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-8 md:mb-12 font-headline tracking-tighter">
                 ¿Por qué somos el aliado que <span className="text-gold">necesitas</span>?
               </h2>
-              <div className="space-y-10">
+              <div className="space-y-8">
                 {[
                   { title: 'Asesoría de Élite', desc: 'Expertos certificados dedicados a optimizar tu cobertura.' },
                   { title: 'Liquidación Inmediata', desc: 'Protocolos de pago acelerados para su total tranquilidad.' },
                   { title: 'Solidez Financiera', desc: 'Respaldados por las principales reaseguradoras globales.' }
                 ].map((feature, i) => (
-                  <div key={i} className="flex gap-6">
+                  <div key={i} className="flex gap-4 md:gap-6">
                     <div className="mt-1 shrink-0 bg-gold/10 p-3 rounded-xl border border-gold/20">
-                      <CheckCircle2 className="h-7 w-7 text-gold" />
+                      <CheckCircle2 className="h-6 md:h-7 w-6 md:w-7 text-gold" />
                     </div>
                     <div>
-                      <h4 className="font-extrabold text-white text-xl mb-2 font-headline">{feature.title}</h4>
+                      <h4 className="font-black text-white text-lg md:text-xl mb-2 font-headline">{feature.title}</h4>
                       <p className="text-white/60 text-sm font-medium leading-relaxed">{feature.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div className="mt-16">
-                <Link
-                  to="/contacto"
+              <div className="mt-12">
+                <button
+                  onClick={handleWhatsAppClick}
                   className="inline-flex items-center gap-3 text-gold font-bold hover:text-white transition-colors uppercase tracking-widest text-sm"
                 >
-                  Hablar con un consultor <ArrowRight className="h-5 w-5" />
-                </Link>
+                  <MessageCircle className="h-5 w-5" />
+                  Chatear por WhatsApp <ArrowRight className="h-5 w-5" />
+                </button>
               </div>
             </motion.div>
           </div>
@@ -198,25 +220,61 @@ export default function Home() {
       </section>
 
       <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto bg-primary rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden border border-gold/20">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
+        <div className="max-w-5xl mx-auto bg-primary rounded-2xl md:rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden border border-gold/20">
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-48 md:w-64 h-48 md:h-64 bg-gold/10 rounded-full blur-3xl"></div>
           <div className="relative z-10">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">¿Listo para sentirte protegido?</h2>
-            <p className="text-white/70 mb-10 max-w-xl mx-auto text-lg leading-relaxed">
+            <h2 className="text-2xl md:text-4xl font-black mb-4 md:mb-6">¿Listo para sentirte protegido?</h2>
+            <p className="text-white/70 mb-8 max-w-xl mx-auto text-lg leading-relaxed">
               Cotiza el seguro que necesitas en menos de 2 minutos y recibe asesoría inmediata de nuestros expertos.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contacto"
-                className="bg-gold text-primary px-10 py-4 rounded-full font-bold hover:bg-white hover:text-primary transition-all shadow-lg"
+                className="bg-gold text-primary px-8 md:px-10 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-white hover:text-primary transition-all shadow-lg"
               >
                 Solicitar Cotización
               </Link>
-              <button className="bg-gold/10 text-white border border-gold/30 px-10 py-4 rounded-full font-bold hover:bg-gold hover:text-primary hover:border-gold transition-all flex items-center justify-center gap-2">
-                <Headphones className="h-5 w-5" />
-                Hablar con un Agente
+              <button 
+                onClick={handleWhatsAppClick}
+                className="bg-green-500 text-white px-8 md:px-10 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition-all"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Chatear por WhatsApp
               </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 md:py-24 bg-off-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <Link to="/citas" className="bg-primary p-6 md:p-8 rounded-[2rem] text-white hover:bg-charcoal transition-all group flex flex-col items-center text-center">
+              <div className="bg-gold w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Calendar className="h-7 w-7 text-primary" />
+              </div>
+              <h3 className="text-lg font-black mb-2 font-headline">Agenda tu Cita Online</h3>
+              <p className="text-white/80 text-sm mb-3">Reserve en menos de 1 minuto</p>
+              <span className="text-gold text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                Ver horarios disponibles <ArrowRight className="h-4 w-4" />
+              </span>
+            </Link>
+            
+            <a 
+              href={`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20quisiera%20información%20sobre%20seguros`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 p-6 md:p-8 rounded-[2rem] text-white hover:bg-green-600 transition-all group flex flex-col items-center text-center"
+            >
+              <div className="bg-white/20 w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <MessageCircle className="h-7 w-7" />
+              </div>
+              <h3 className="text-lg font-black mb-2">Contacto por WhatsApp</h3>
+              <p className="text-white/80 text-sm mb-3">Respuesta inmediata</p>
+              <span className="text-white text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">
+                Enviar mensaje <ArrowRight className="h-4 w-4" />
+              </span>
+            </a>
           </div>
         </div>
       </section>

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   HeartPulse, Check, X, ChevronDown, Phone, Shield, UserPlus, Baby, Stethoscope, Globe, AlertCircle,
-  CheckCircle2, HelpCircle, Send, ArrowRight, Menu, X as XIcon
+  CheckCircle2, HelpCircle, Send, ArrowRight, Menu, X as XIcon, Calendar, MessageCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { 
@@ -641,6 +641,31 @@ export default function MedicalInsurance() {
           </p>
         </div>
       </div>
+
+      {/* Opciones de Contacto / Citas */}
+      <section className="py-12 bg-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-black text-white mb-6 text-center">¿Cómo prefieres contactarnos?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <Link to="/citas" className="bg-white p-5 rounded-xl text-center hover:bg-off-white transition-all group flex flex-col items-center">
+              <Calendar className="h-8 w-8 mb-3 text-primary" />
+              <h3 className="font-black text-primary">Agenda tu Cita Online</h3>
+              <p className="text-charcoal/70 text-xs mt-1">Reserva en Calendly</p>
+            </Link>
+            
+            <a 
+              href={`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20me%20interesa%20el%20seguro%20m%C3%A9dico`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-500 p-5 rounded-xl text-white text-center hover:bg-green-600 transition-all group flex flex-col items-center"
+            >
+              <MessageCircle className="h-8 w-8 mb-3" />
+              <h3 className="font-black">Por WhatsApp</h3>
+              <p className="text-white/80 text-xs mt-1">Chatea con nosotros</p>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

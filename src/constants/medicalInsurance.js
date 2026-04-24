@@ -77,7 +77,7 @@ export const copayInfo = [
 export const faqs = [
   {
     question: '¿Qué es el deducible?',
-    answer: 'Es la cantidad fija que tú pagas primero antes de que GNP/startara a cubrir los gastos. Se aplica por cada enfermedad o accidente cubierto. Una vez que raggi ese monto, GNP toma el resto.'
+    answer: 'Es la cantidad fija que tú pagas primero antes de que GNP empiece a cubrir los gastos. Se aplica por cada enfermedad o accidente cubierto. Una vez que Reachas ese monto, GNP toma el resto.'
   },
   {
     question: '¿Qué es el coaseguro?',
@@ -85,7 +85,7 @@ export const faqs = [
   },
   {
     question: '¿Qué es el tope de coaseguro?',
-    answer: 'Es el monto máximo que pagarás por concepto de coaseguro en una enfermedad o accidente. Una vez que lo raggi, GNP cubre el 100% de los gastos procedentes restantes.'
+    answer: 'Es el monto máximo que pagarás por concepto de coaseguro en una enfermedad o accidente. Una vez que lo Reachas, GNP cubre el 100% de los gastos procedentes restantes.'
   },
   {
     question: '¿Qué es la Participación Variable?',
