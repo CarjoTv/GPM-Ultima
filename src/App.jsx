@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, ScrollRestoration } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -6,17 +6,11 @@ import MedicalInsurance from './pages/MedicalInsurance';
 import CarInsurance from './pages/CarInsurance';
 import Contact from './pages/Contact';
 import Citas from './pages/Citas';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
-  const { pathname } = useLocation();
-  
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  
-  return null;
+  return (
+    <ScrollRestoration />
+  );
 }
 
 export default function App() {

@@ -92,11 +92,17 @@ export default function Contact() {
               <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:scale-110 duration-700">
                 <MessageSquare className="w-48 h-48" />
               </div>
-              <h3 className="text-2xl font-black mb-6 relative z-10 font-headline uppercase tracking-tighter">Chat Premium</h3>
-              <p className="text-white/60 mb-8 text-sm font-medium relative z-10 leading-relaxed uppercase tracking-widest">Atención inmediata para clientes de pólizas Oro y Platino.</p>
-              <button className="bg-tertiary text-primary px-10 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white transition-all relative z-10 shadow-xl shadow-tertiary/20">
-                Iniciar Sesión
-              </button>
+              <h3 className="text-2xl font-black mb-6 relative z-10 font-headline uppercase tracking-tighter">WhatsApp Directo</h3>
+              <p className="text-white/60 mb-8 text-sm font-medium relative z-10 leading-relaxed">Atención inmediata y personalizada para resolver todas tus dudas sobre seguros.</p>
+              <a
+                href="https://wa.me/5216672524470?text=Hola,%20quisiera%20información%20sobre%20seguros"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-tertiary text-primary px-10 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:bg-white transition-all relative z-10 shadow-xl shadow-tertiary/20 inline-flex items-center gap-2"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Contactar por WhatsApp
+              </a>
             </div>
           </motion.div>
 
