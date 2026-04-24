@@ -10,6 +10,10 @@ export default defineConfig({
       '@': path.resolve(__dirname, '.'),
     },
   },
+  base: '/',
+  build: {
+    emptyOutDir: true,
+  },
   server: {
     hmr: process.env.DISABLE_HMR !== 'true',
   },
