@@ -65,12 +65,12 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3 md:gap-5">
               <Link
                 to="/contacto"
-                className="bg-gold text-primary px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-white transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-gold/30"
+                className="bg-gold text-primary px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-white hover:text-primary transition-all flex items-center justify-center gap-3 group shadow-2xl shadow-gold/30"
               >
                 Solicitar Cotización
                 <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="bg-white/10 text-white border border-white/20 px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-white hover:text-primary transition-all shadow-lg backdrop-blur-sm">
+              <button className="bg-white/10 text-white border border-white/20 px-6 md:px-10 py-3 md:py-5 rounded-2xl font-black uppercase tracking-widest text-xs md:text-sm hover:bg-gold hover:text-primary hover:border-gold/50 transition-all shadow-lg backdrop-blur-sm">
                 Nuestros Planes
               </button>
             </div>
@@ -87,7 +87,7 @@ export default function Home() {
               { label: 'Efectividad en Siniestros', value: '100%' },
               { label: 'Asistencia VIP', value: '24/7' }
             ].map((stat, i) => (
-              <div key={i} className="bg-primary/80 backdrop-blur-sm p-4 md:p-8 rounded-[2rem] shadow-2xl border border-white/10 flex flex-col items-center md:items-start min-w-[140px] md:min-w-[180px] group hover:border-gold/30 transition-all">
+              <div key={i} className="bg-primary/80 backdrop-blur-sm p-4 md:p-8 rounded-[2rem] shadow-2xl border border-gold/30 flex flex-col items-center md:items-start min-w-[140px] md:min-w-[180px] group hover:border-gold/60 transition-all">
                 <p className="text-xl md:text-3xl font-black text-gold mb-1 font-headline tracking-tighter">{stat.value}</p>
                 <p className="text-[8px] md:text-xs text-white/60 font-bold uppercase tracking-[0.2em]">{stat.label}</p>
               </div>
@@ -198,8 +198,8 @@ export default function Home() {
       </section>
 
       <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto bg-primary rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="max-w-5xl mx-auto bg-primary rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden border border-gold/20">
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-64 h-64 bg-gold/10 rounded-full blur-3xl"></div>
           <div className="relative z-10">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">¿Listo para sentirte protegido?</h2>
             <p className="text-white/70 mb-10 max-w-xl mx-auto text-lg leading-relaxed">
@@ -208,11 +208,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contacto"
-                className="bg-gold text-primary px-10 py-4 rounded-full font-bold hover:bg-white transition-all shadow-lg"
+                className="bg-gold text-primary px-10 py-4 rounded-full font-bold hover:bg-white hover:text-primary transition-all shadow-lg"
               >
                 Solicitar Cotización
               </Link>
-              <button className="bg-lighter-navy/50 text-white border border-white/30 px-10 py-4 rounded-full font-bold hover:bg-lighter-navy/70 transition-all flex items-center justify-center gap-2">
+              <button className="bg-gold/10 text-white border border-gold/30 px-10 py-4 rounded-full font-bold hover:bg-gold hover:text-primary hover:border-gold transition-all flex items-center justify-center gap-2">
                 <Headphones className="h-5 w-5" />
                 Hablar con un Agente
               </button>

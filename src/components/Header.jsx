@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logo from '../img/logo (2) (1).png';
+import WeatherWidget from './WeatherWidget';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,13 +56,16 @@ export default function Header() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              to="/contacto"
-              className="bg-primary text-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-lighter-navy hover:translate-y-[-1px] transition-all flex items-center gap-2 shadow-lg shadow-primary/20"
+            <a
+              href="https://wa.me/5216672524470?text=Hola,%20quisiera%20información%20sobre%20seguros"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-secondary text-off-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-opacity-90 hover:translate-y-[-1px] transition-all flex items-center gap-2 shadow-lg shadow-secondary/20"
             >
-              <Phone className="h-4 w-4 text-secondary" />
-              Llámanos
-            </Link>
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+            <WeatherWidget />
           </div>
 
           <div className="md:hidden">
@@ -96,14 +100,16 @@ export default function Header() {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                to="/contacto"
+              <a
+                href="https://wa.me/5216672524470?text=Hola,%20quisiera%20información%20sobre%20seguros"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="mt-4 w-full bg-primary text-white px-4 py-3 rounded-lg text-center font-medium flex items-center justify-center gap-2"
+                className="mt-4 w-full bg-secondary text-white px-4 py-3 rounded-lg text-center font-medium flex items-center justify-center gap-2"
               >
-                <Phone className="h-5 w-5" />
-                Hablar con un asesor
-              </Link>
+                <MessageCircle className="h-5 w-5" />
+                WhatsApp
+              </a>
             </div>
           </motion.div>
         )}

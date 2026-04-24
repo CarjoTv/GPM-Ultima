@@ -72,7 +72,7 @@ export default function CarInsurance() {
                 className="w-full h-full object-cover rounded-[3rem] shadow-4xl border-4 border-white/5"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute top-1/2 left-0 -translate-x-1/2 bg-primary p-8 rounded-3xl shadow-3xl hidden md:flex items-center gap-6 border border-white/10">
+              <div className="absolute top-1/2 left-0 -translate-x-1/2 bg-primary p-8 rounded-3xl shadow-3xl hidden md:flex items-center gap-6 border border-gold/20">
                 <div className="bg-tertiary p-3 rounded-xl shadow-lg">
                   <Clock className="h-8 w-8 text-primary" />
                 </div>
@@ -103,9 +103,9 @@ export default function CarInsurance() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="bg-neutral p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-primary/5 hover:border-tertiary/40 hover:bg-white hover:shadow-3xl transition-all duration-500 group"
+              className="bg-neutral p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-gold/10 hover:border-gold/30 hover:shadow-3xl transition-all duration-500 group"
             >
-              <div className="bg-primary w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl shadow-xl flex items-center justify-center mb-8 border border-white/10 group-hover:scale-110 transition-transform">
+              <div className="bg-primary w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl shadow-xl flex items-center justify-center mb-8 border border-gold/20 group-hover:scale-110 transition-transform">
                 <coverage.icon className="h-6 w-6 md:h-8 md:w-8 text-tertiary" />
               </div>
               <h3 className="text-2xl md:text-3xl font-black text-primary mb-4 md:mb-6 font-headline uppercase tracking-tighter">{coverage.title}</h3>
