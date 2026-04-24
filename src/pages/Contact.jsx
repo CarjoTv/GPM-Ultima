@@ -103,7 +103,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-4xl border border-primary/5"
+            className="bg-white p-10 md:p-16 rounded-[3.5rem] shadow-4xl border-2 border-gold/20"
           >
             {submitted ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-10">

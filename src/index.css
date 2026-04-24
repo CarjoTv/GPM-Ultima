@@ -5,18 +5,18 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-headline: "Manrope", sans-serif;
   
-  --color-primary: #0A1F44;
-  --color-secondary: #C5A059;
-  --color-tertiary: #F5F0E1;
-  --color-neutral: #F5F0E1;
-  --color-light-beige: #E9E1D2;
+  --color-primary: #1A3566;
+  --color-secondary: #C8820A;
+  --color-tertiary: #FDFCF8;
+  --color-neutral: #FDFCF8;
+  --color-light-beige: #F5F2EA;
   --color-charcoal: #1A1A1A;
   --color-lighter-navy: #2A436A;
   
-  --color-navy: #0A1F44;
-  --color-gold: #C5A059;
-  --color-off-white: #F5F0E1;
-  --color-beige: #E9E1D2;
+  --color-navy: #1A3566;
+  --color-gold: #C8820A;
+  --color-off-white: #FDFCF8;
+  --color-beige: #F5F2EA;
   --color-charcoal: #1A1A1A;
   --color-lighter-navy: #2A436A;
 }

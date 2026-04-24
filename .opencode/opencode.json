@@ -1,0 +1,6 @@
+{
+  "plugin": [
+    "@gotgenes/opencode-agent-identity",
+    "opencode-antigravity-multi-auth@latest"
+  ]
+}
