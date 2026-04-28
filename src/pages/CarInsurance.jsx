@@ -1,10 +1,31 @@
 import { motion } from 'motion/react';
 import { Car, ShieldAlert, Zap, Navigation, Clock, ShieldCheck, ArrowRight, CheckCircle, Phone, MessageCircle, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import WhatsAppButton from '../components/WhatsAppButton';
+import AnimatedSection from '../components/AnimatedSection';
+import ContactCTA from '../components/ContactCTA';
+import { contactInfo } from '../constants/shared';
 
-const contactInfo = {
-  whatsapp: '+5216672524470'
-};
+const coverageFeatures = [
+  {
+    title: 'Terceros',
+    desc: 'Cobertura esencial para cumplir con la ley y protegerte ante daños a otros.',
+    icon: ShieldAlert,
+    items: ['Responsabilidad Civil obligatoria', 'Asistencia en viaje inicial', 'Protección jurídica básica']
+  },
+  {
+    title: 'Terceros Ampliado',
+    desc: 'Protección adicional contra robo e incendio y lunas de tu vehículo.',
+    icon: Zap,
+    items: ['Incendio, robo y lunas', 'Vehículo de cortesía', 'Asistencia en viaje completa']
+  },
+  {
+    title: 'Todo Riesgo',
+    desc: 'La máxima protección para tu coche, incluso ante daños propios.',
+    icon: ShieldCheck,
+    items: ['Daños propios', 'Pérdida total', 'Gestión de multas', 'Mejor valoración del vehículo']
+  }
+];
 
 export default function CarInsurance() {
   const handleWhatsAppClick = (plan) => {
@@ -12,37 +33,16 @@ export default function CarInsurance() {
     window.open(`https://wa.me/${contactInfo.whatsapp}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  const coverageFeatures = [
-    {
-      title: 'Terceros',
-      desc: 'Cobertura esencial para cumplir con la ley y protegerte ante daños a otros.',
-      icon: ShieldAlert,
-      items: ['Responsabilidad Civil obligatoria', 'Asistencia en viaje inicial', 'Protección jurídica básica']
-    },
-    {
-      title: 'Terceros Ampliado',
-      desc: 'Protección adicional contra robo e incendio y lunas de tu vehículo.',
-      icon: Zap,
-      items: ['Incendio, robo y lunas', 'Vehículo de cortesía', 'Asistencia en viaje completa']
-    },
-    {
-      title: 'Todo Riesgo',
-      desc: 'La máxima protección para tu coche, incluso ante daños propios.',
-      icon: ShieldCheck,
-      items: ['Daños propios', 'Pérdida total', 'Gestión de multas', 'Mejor valoración del vehículo']
-    }
+  const stats = [
+    { label: 'Talleres de red VIP', val: '+3,500' },
+    { label: 'Países Cubiertos', val: '62' },
+    { label: 'Flota de Grúas', val: 'Global' },
+    { label: 'Soporte Concierge', val: '24/7' }
   ];
 
   return (
     <div className="flex flex-col w-full bg-off-white">
-      <a
-        href={`https://wa.me/${contactInfo.whatsapp}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110"
-      >
-        <Phone className="h-6 w-6" />
-      </a>
+      <WhatsAppButton />
 
       <section className="bg-primary py-20 md:py-24 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
@@ -120,12 +120,9 @@ export default function CarInsurance() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
           {coverageFeatures.map((coverage, i) => (
-            <motion.div
+            <AnimatedSection
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+              delay={i * 0.1}
               className="bg-beige p-8 md:p-12 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-primary/5"
             >
               <div className="bg-primary w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl shadow-xl flex items-center justify-center mb-8 border border-gold/20">
@@ -156,7 +153,7 @@ export default function CarInsurance() {
                   Cotizar por WhatsApp
                 </button>
               </div>
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
       </section>
@@ -172,12 +169,7 @@ export default function CarInsurance() {
                 Estamos contigo en cada <span className="text-gold">kilómetro</span> del camino
               </h2>
               <div className="grid grid-cols-2 gap-6 md:gap-8 mb-8">
-                {[
-                  { label: 'Talleres de red VIP', val: '+3,500' },
-                  { label: 'Países Cubiertos', val: '62' },
-                  { label: 'Flota de Grúas', val: 'Global' },
-                  { label: 'Soporte Concierge', val: '24/7' }
-                ].map((stat, i) => (
+                {stats.map((stat, i) => (
                   <div key={i} className="border-l-2 border-gold/30 pl-4">
                     <p className="text-3xl md:text-4xl font-black text-gold mb-1 font-headline">{stat.val}</p>
                     <p className="text-xs text-white/60 font-bold uppercase tracking-[0.2em]">{stat.label}</p>
@@ -212,34 +204,7 @@ export default function CarInsurance() {
         </div>
       </section>
 
-      <section id="contacto" className="py-20 md:py-32 bg-off-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-black text-primary mb-4 font-headline">
-            ¿Listo para asegurar tu coche?
-          </h2>
-          <p className="text-charcoal/70 mb-8">
-            Elige cómo contactarnos
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
-            <Link to="/citas" className="bg-primary p-5 rounded-xl text-white hover:bg-charcoal transition-all group flex flex-col items-center">
-              <Calendar className="h-8 w-8 mb-3 text-gold" />
-              <h3 className="font-black">Agenda tu Cita Online</h3>
-              <p className="text-white/70 text-xs mt-1">Reserva en Calendly</p>
-            </Link>
-            
-            <a
-              href={`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20quisiera%20cotizar%20un%20seguro%20de%20auto`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 p-5 rounded-xl text-white hover:bg-green-600 transition-all group flex flex-col items-center"
-            >
-              <MessageCircle className="h-8 w-8 mb-3" />
-              <h3 className="font-black">Por WhatsApp</h3>
-              <p className="text-white/80 text-xs mt-1">Chatea con nosotros</p>
-            </a>
-          </div>
-        </div>
-      </section>
+      <ContactCTA whatsappMessage="Hola,%20quisiera%20cotizar%20un%20seguro%20de%20auto" />
     </div>
   );
 }

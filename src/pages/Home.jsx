@@ -1,56 +1,55 @@
 import { motion } from 'motion/react';
-import { ArrowRight, ShieldCheck, HeartPulse, Car, Headphones, ChevronRight, CheckCircle2, Phone, MessageCircle, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, ShieldCheck, HeartPulse, Car, Headphones, ChevronRight, CheckCircle2, MessageCircle, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import WhatsAppButton from '../components/WhatsAppButton';
+import ContactCTA from '../components/ContactCTA';
+import AnimatedSection from '../components/AnimatedSection';
+import { contactInfo } from '../constants/shared';
 
-const contactInfo = {
-  whatsapp: '+5216672524470'
-};
+const services = [
+  {
+    title: 'Seguro Médico',
+    description: 'Cobertura integral para ti y tu familia con acceso a los mejores especialistas.',
+    icon: HeartPulse,
+    path: '/seguro-medico',
+    color: 'bg-primary text-gold'
+  },
+  {
+    title: 'Seguro de Auto',
+    description: 'Protección total en la carretera con asistencia en viaje nacional e internacional.',
+    icon: Car,
+    path: '/seguro-auto',
+    color: 'bg-primary text-gold'
+  },
+  {
+    title: 'Seguro de Vida',
+    description: 'Asegura el futuro de los que más quieres con planes flexibles y competitivos.',
+    icon: ShieldCheck,
+    path: '#',
+    color: 'bg-primary text-gold'
+  }
+];
+
+const features = [
+  { title: 'Asesoría de Élite', desc: 'Expertos certificados dedicados a optimizar tu cobertura.' },
+  { title: 'Liquidación Inmediata', desc: 'Protocolos de pago acelerados para su total tranquilidad.' },
+  { title: 'Solidez Financiera', desc: 'Respaldados por las principales reaseguradoras globales.' }
+];
+
+const stats = [
+  { label: 'Clientes satisfechos', value: '+15,000' },
+  { label: 'Efectividad en Siniestros', value: '100%' },
+  { label: 'Asistencia VIP', value: '24/7' }
+];
 
 export default function Home() {
   const handleWhatsAppClick = () => {
     window.open(`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20quisiera%20información%20sobre%20seguros`, '_blank');
   };
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
-  };
-
-  const services = [
-    {
-      title: 'Seguro Médico',
-      description: 'Cobertura integral para ti y tu familia con acceso a los mejores especialistas.',
-      icon: HeartPulse,
-      path: '/seguro-medico',
-      color: 'bg-primary text-gold'
-    },
-    {
-      title: 'Seguro de Auto',
-      description: 'Protección total en la carretera con asistencia en viaje nacional e internacional.',
-      icon: Car,
-      path: '/seguro-auto',
-      color: 'bg-primary text-gold'
-    },
-    {
-      title: 'Seguro de Vida',
-      description: 'Asegura el futuro de los que más quieres con planes flexibles y competitivos.',
-      icon: ShieldCheck,
-      path: '#',
-      color: 'bg-primary text-gold'
-    }
-  ];
-
   return (
     <div className="flex flex-col w-full bg-off-white">
-      <a
-        href={`https://wa.me/${contactInfo.whatsapp}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110"
-      >
-        <Phone className="h-6 w-6" />
-      </a>
+      <WhatsAppButton />
 
       <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-center overflow-hidden py-16 md:py-32">
         <div className="absolute inset-0 z-0">
@@ -103,11 +102,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="flex flex-wrap justify-center md:justify-start gap-4 md:gap-10"
           >
-            {[
-              { label: 'Clientes satisfechos', value: '+15,000' },
-              { label: 'Efectividad en Siniestros', value: '100%' },
-              { label: 'Asistencia VIP', value: '24/7' }
-            ].map((stat, i) => (
+            {stats.map((stat, i) => (
               <div key={i} className="bg-primary/80 backdrop-blur-sm p-4 md:p-8 rounded-[2rem] shadow-2xl border border-gold/30 flex flex-col items-center md:items-start min-w-[140px] md:min-w-[180px] group hover:border-gold/60 transition-all">
                 <p className="text-xl md:text-3xl font-black text-gold mb-1 font-headline tracking-tighter">{stat.value}</p>
                 <p className="text-[8px] md:text-xs text-white/60 font-bold uppercase tracking-[0.2em]">{stat.label}</p>
@@ -119,7 +114,11 @@ export default function Home() {
 
       <section className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16 md:mb-20">
-          <motion.div {...fadeInUp}>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl md:text-5xl font-black text-primary mb-4 font-headline tracking-tight">Servicios Especializados</h2>
             <div className="h-1.5 w-24 bg-gold mx-auto rounded-full mb-6"></div>
             <p className="text-charcoal/70 max-w-2xl mx-auto font-medium text-lg">
@@ -130,12 +129,9 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {services.map((item, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
+              delay={index * 0.2}
               className="bg-beige p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 group border border-primary/5"
             >
               <div className={`w-12 h-12 md:w-16 md:h-16 ${item.color} rounded-xl md:rounded-2xl flex items-center justify-center mb-6 md:mb-8 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
@@ -151,7 +147,7 @@ export default function Home() {
               >
                 Más información <ChevronRight className="h-4 w-4 text-gold" />
               </Link>
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
       </section>
@@ -180,20 +176,12 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <AnimatedSection initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}>
               <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-8 md:mb-12 font-headline tracking-tighter">
                 ¿Por qué somos el aliado que <span className="text-gold">necesitas</span>?
               </h2>
               <div className="space-y-8">
-                {[
-                  { title: 'Asesoría de Élite', desc: 'Expertos certificados dedicados a optimizar tu cobertura.' },
-                  { title: 'Liquidación Inmediata', desc: 'Protocolos de pago acelerados para su total tranquilidad.' },
-                  { title: 'Solidez Financiera', desc: 'Respaldados por las principales reaseguradoras globales.' }
-                ].map((feature, i) => (
+                {features.map((feature, i) => (
                   <div key={i} className="flex gap-4 md:gap-6">
                     <div className="mt-1 shrink-0 bg-gold/10 p-3 rounded-xl border border-gold/20">
                       <CheckCircle2 className="h-6 md:h-7 w-6 md:w-7 text-gold" />
@@ -214,37 +202,12 @@ export default function Home() {
                   Chatear por WhatsApp <ArrowRight className="h-5 w-5" />
                 </button>
               </div>
-            </motion.div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      <section className="py-20 px-4">
-        <div className="max-w-5xl mx-auto bg-primary rounded-2xl md:rounded-3xl p-8 md:p-16 text-center text-white relative overflow-hidden border border-gold/20">
-          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-48 md:w-64 h-48 md:h-64 bg-gold/10 rounded-full blur-3xl"></div>
-          <div className="relative z-10">
-            <h2 className="text-2xl md:text-4xl font-black mb-4 md:mb-6">¿Listo para sentirte protegido?</h2>
-            <p className="text-white/70 mb-8 max-w-xl mx-auto text-lg leading-relaxed">
-              Cotiza el seguro que necesitas en menos de 2 minutos y recibe asesoría inmediata de nuestros expertos.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/contacto"
-                className="bg-gold text-primary px-8 md:px-10 py-4 rounded-xl font-black uppercase tracking-widest text-sm hover:bg-white hover:text-primary transition-all shadow-lg"
-              >
-                Solicitar Cotización
-              </Link>
-              <button 
-                onClick={handleWhatsAppClick}
-                className="bg-green-500 text-white px-8 md:px-10 py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-green-600 transition-all"
-              >
-                <MessageCircle className="h-5 w-5" />
-                Chatear por WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactCTA />
 
       <section className="py-16 md:py-24 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

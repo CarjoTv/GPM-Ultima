@@ -4,6 +4,7 @@ import { Menu, X, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import logo from '../img/logo (2) (1).png';
 import WeatherWidget from './WeatherWidget';
+import { navLinks, contactInfo } from '../constants/shared';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,14 +18,6 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const navLinks = [
-    { name: 'Inicio', path: '/' },
-    { name: 'Seguro Médico', path: '/seguro-medico' },
-    { name: 'Seguro de Auto', path: '/seguro-auto' },
-    { name: 'Citas', path: '/citas' },
-    { name: 'Contacto', path: '/contacto' },
-  ];
 
   const isActive = (path) => location.pathname === path;
 
@@ -57,7 +50,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="https://wa.me/5216672524470?text=Hola,%20quisiera%20información%20sobre%20seguros"
+              href={`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20quisiera%20información%20sobre%20seguros`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-secondary text-off-white px-5 py-2.5 rounded-xl text-sm font-bold hover:bg-opacity-90 hover:translate-y-[-1px] transition-all flex items-center gap-2 shadow-lg shadow-secondary/20"
@@ -101,7 +94,7 @@ export default function Header() {
                 </Link>
               ))}
               <a
-                href="https://wa.me/5216672524470?text=Hola,%20quisiera%20información%20sobre%20seguros"
+                href={`https://wa.me/${contactInfo.whatsapp}?text=Hola,%20quisiera%20información%20sobre%20seguros`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}

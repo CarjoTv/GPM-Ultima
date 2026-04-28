@@ -1,6 +1,7 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import logo from '../img/logo (2) (1).png';
+import { navLinks } from '../constants/shared';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -39,18 +40,11 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-bold mb-6 font-headline">Enlaces Rápidos</h3>
             <ul className="space-y-4 text-sm font-medium">
-              <li>
-                <Link to="/" className="hover:text-gold transition-colors">Inicio</Link>
-              </li>
-              <li>
-                <Link to="/seguro-medico" className="hover:text-gold transition-colors">Seguro Médico</Link>
-              </li>
-              <li>
-                <Link to="/seguro-auto" className="hover:text-gold transition-colors">Seguro de Auto</Link>
-              </li>
-              <li>
-                <Link to="/contacto" className="hover:text-gold transition-colors">Contacto</Link>
-              </li>
+              {navLinks.filter(link => link.path !== '/citas').map((link) => (
+                <li key={link.path}>
+                  <Link to={link.path} className="hover:text-gold transition-colors">{link.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 

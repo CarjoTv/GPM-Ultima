@@ -9,6 +9,14 @@ import {
   contactInfo, basicCoverages, additionalBenefits, waitingPeriods, 
   exclusions, specialCoverages, copayInfo, faqs 
 } from '../constants/medicalInsurance';
+import WhatsAppButton from '../components/WhatsAppButton';
+import AnimatedSection from '../components/AnimatedSection';
+import CoverageCard from '../components/CoverageCard';
+import BenefitCard from '../components/BenefitCard';
+import FormField from '../components/FormField';
+import FAQItem from '../components/FAQItem';
+import { WhatsAppContact, PhoneContact } from '../components/ContactMethod';
+import SimpleCard from '../components/SimpleCard';
 
 export default function MedicalInsurance() {
   const [openFaq, setOpenFaq] = useState(null);
@@ -42,19 +50,13 @@ export default function MedicalInsurance() {
     setShowMenu(false);
   };
 
+  const menuItems = ['¿Qué es?', 'Coberturas', 'Beneficios', 'Costos', 'FAQ', 'Contacto'];
+  const menuIds = ['whatis', 'coverages', 'benefits', 'costs', 'faq', 'contacto'];
+
   return (
     <div className="flex flex-col w-full bg-off-white">
-      {/* Floating WhatsApp Button */}
-      <a
-        href={`https://wa.me/${contactInfo.whatsapp}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110"
-      >
-        <Phone className="h-6 w-6" />
-      </a>
+      <WhatsAppButton />
 
-      {/* Hero Section */}
       <section className="bg-primary pt-20 md:pt-24 pb-20 md:pb-32 relative overflow-hidden">
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/10 rounded-full blur-[100px]"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -110,23 +112,19 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Navigation */}
       <nav className="bg-primary/95 backdrop-blur-sm sticky top-0 z-40 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="hidden md:flex items-center gap-6">
-              {['¿Qué es?', 'Coberturas', 'Beneficios', 'Costos', 'FAQ', 'Contacto'].map((item, i) => {
-                const ids = ['whatis', 'coverages', 'benefits', 'costs', 'faq', 'contacto'];
-                return (
+              {menuItems.map((item, i) => (
                   <button
                     key={item}
-                    onClick={() => scrollToSection(ids[i])}
+                    onClick={() => scrollToSection(menuIds[i])}
                     className="text-white/70 hover:text-gold text-sm font-medium transition-colors"
                   >
                     {item}
                   </button>
-                );
-              })}
+              ))}
             </div>
             <button className="md:hidden text-white" onClick={() => setShowMenu(!showMenu)}>
               {showMenu ? <XIcon /> : <Menu />}
@@ -135,23 +133,19 @@ export default function MedicalInsurance() {
         </div>
         {showMenu && (
           <div className="md:hidden bg-primary border-t border-white/10 px-4 py-4">
-            {['¿Qué es?', 'Coberturas', 'Beneficios', 'Costos', 'FAQ', 'Contacto'].map((item, i) => {
-              const ids = ['whatis', 'coverages', 'benefits', 'costs', 'faq', 'contacto'];
-              return (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(ids[i])}
-                  className="block w-full text-left text-white/70 hover:text-gold py-2 text-sm font-medium"
-                >
-                  {item}
-                </button>
-              );
-            })}
+            {menuItems.map((item, i) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(menuIds[i])}
+                className="block w-full text-left text-white/70 hover:text-gold py-2 text-sm font-medium"
+              >
+                {item}
+              </button>
+            ))}
           </div>
         )}
       </nav>
 
-      {/* ¿Qué es GNP Personaliza? */}
       <section id="whatis" className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mb-12">
@@ -198,7 +192,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Coberturas Básicas */}
       <section id="coverages" className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -212,20 +205,7 @@ export default function MedicalInsurance() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {basicCoverages.map((coverage, i) => (
-              <div key={i} className="bg-beige p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-primary/5">
-                <h3 className="text-lg font-extrabold text-primary mb-4 flex items-center gap-2">
-                  <Check className="h-5 w-5 text-gold" />
-                  {coverage.category}
-                </h3>
-                <ul className="space-y-2">
-                  {coverage.items.map((item, idx) => (
-                    <li key={idx} className="text-charcoal/70 text-sm flex items-start gap-2 font-medium">
-                      <span className="text-gold">•</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <CoverageCard key={i} coverage={coverage} index={i} />
             ))}
           </div>
 
@@ -261,7 +241,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Beneficios Adicionales */}
       <section id="benefits" className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -275,16 +254,12 @@ export default function MedicalInsurance() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {additionalBenefits.map((benefit, i) => (
-              <div key={i} className="bg-beige p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-500 border border-primary/5">
-                <h3 className="text-lg font-extrabold text-primary mb-2">{benefit.name}</h3>
-                <p className="text-charcoal/70 text-sm font-medium">{benefit.desc}</p>
-              </div>
+              <BenefitCard key={i} benefit={benefit} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Gastos a Cargo del Asegurado */}
       <section id="costs" className="py-20 md:py-32 bg-primary relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-gold rounded-full blur-[120px]"></div>
@@ -307,7 +282,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Periodos de Espera */}
       <section className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -340,7 +314,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Exclusiones Principales */}
       <section className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -363,7 +336,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Acceso Hospitalario */}
       <section className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -407,7 +379,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Cobertura en el Extranjero */}
       <section className="py-20 md:py-32 bg-primary relative overflow-hidden">
         <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-gold rounded-full blur-[120px]"></div>
@@ -440,7 +411,6 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Coberturas Especiales */}
       <section className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -451,16 +421,12 @@ export default function MedicalInsurance() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {specialCoverages.map((coverage, i) => (
-              <div key={i} className="bg-beige p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-sm border border-primary/5">
-                <h3 className="text-lg font-extrabold text-primary mb-3">{coverage.title}</h3>
-                <p className="text-charcoal/70 text-sm font-medium">{coverage.desc}</p>
-              </div>
+              <SimpleCard key={i} title={coverage.title} desc={coverage.desc} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
       <section id="faq" className="py-20 md:py-32 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -470,35 +436,14 @@ export default function MedicalInsurance() {
             </h2>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-beige rounded-2xl overflow-hidden border border-primary/5">
-                <button
-                  onClick={() => handleFaqClick(i)}
-                  className="w-full p-6 text-left flex items-center justify-between bg-primary hover:bg-lighter-navy transition-colors"
-                >
-                  <span className="text-white font-medium pr-4">{faq.question}</span>
-                  <ChevronDown className={`h-5 w-5 text-gold transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                <AnimatePresence>
-                  {openFaq === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="p-6 text-charcoal/70 leading-relaxed font-medium bg-beige">{faq.answer}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              <FAQItem key={i} faq={faq} index={i} openFaq={openFaq} handleFaqClick={handleFaqClick} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contacto / Cotización */}
       <section id="contacto" className="py-20 md:py-32 bg-primary relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-gold rounded-full blur-[120px]"></div>
@@ -514,109 +459,81 @@ export default function MedicalInsurance() {
               </p>
               
               <div className="space-y-4">
-                <a
-                  href={`https://wa.me/${contactInfo.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 bg-green-500 text-white p-4 rounded-xl hover:bg-green-600 transition-colors"
-                >
-                  <Phone className="h-6 w-6" />
-                  <span className="font-bold">WhatsApp: {contactInfo.whatsapp}</span>
-                </a>
-                <div className="flex items-center gap-4 text-white/70 p-4">
-                  <Phone className="h-6 w-6" />
-                  <span className="font-medium">Línea GNP: {contactInfo.phone}</span>
-                </div>
+                <WhatsAppContact />
+                <PhoneContact phone={contactInfo.phone} />
               </div>
             </div>
 
             <form onSubmit={handleSubmit} className="bg-beige p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] shadow-2xl">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-primary text-sm font-bold mb-2">Nombre completo</label>
-                  <input
-                    type="text"
-                    name="nombre"
-                    value={formData.nombre}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-                <div>
-                  <label className="block text-primary text-sm font-bold mb-2">Edad</label>
-                  <input
-                    type="number"
-                    name="edad"
-                    value={formData.edad}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                    placeholder="Tu edad"
-                  />
-                </div>
-                <div>
-                  <label className="block text-primary text-sm font-bold mb-2">Ciudad / Estado</label>
-                  <input
-                    type="text"
-                    name="ciudad"
-                    value={formData.ciudad}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                    placeholder="Ciudad de residencia"
-                  />
-                </div>
-                <div>
-                  <label className="block text-primary text-sm font-bold mb-2">Personas a asegurar</label>
-                  <input
-                    type="number"
-                    name="personas"
-                    value={formData.personas}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                    placeholder="Número de personas"
-                  />
-                </div>
-                <div>
-                  <label className="block text-primary text-sm font-bold mb-2">Teléfono celular</label>
-                  <input
-                    type="tel"
-                    name="telefono"
-                    value={formData.telefono}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                    placeholder="Tu teléfono"
-                  />
-                </div>
-                <div>
-                  <label className="block text-primary text-sm font-bold mb-2">Correo electrónico</label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                    placeholder="tu@email.com"
-                  />
-                </div>
+                <FormField 
+                  label="Nombre completo" 
+                  name="nombre" 
+                  value={formData.nombre} 
+                  onChange={handleInputChange} 
+                  required 
+                  placeholder="Tu nombre" 
+                />
+                <FormField 
+                  label="Edad" 
+                  name="edad" 
+                  type="number"
+                  value={formData.edad} 
+                  onChange={handleInputChange} 
+                  required 
+                  placeholder="Tu edad" 
+                />
+                <FormField 
+                  label="Ciudad / Estado" 
+                  name="ciudad" 
+                  value={formData.ciudad} 
+                  onChange={handleInputChange} 
+                  required 
+                  placeholder="Ciudad de residencia" 
+                />
+                <FormField 
+                  label="Personas a asegurar" 
+                  name="personas" 
+                  type="number"
+                  value={formData.personas} 
+                  onChange={handleInputChange} 
+                  required 
+                  placeholder="Número de personas" 
+                />
+                <FormField 
+                  label="Teléfono celular" 
+                  name="telefono" 
+                  type="tel"
+                  value={formData.telefono} 
+                  onChange={handleInputChange} 
+                  required 
+                  placeholder="Tu teléfono" 
+                />
+                <FormField 
+                  label="Correo electrónico" 
+                  name="email" 
+                  type="email"
+                  value={formData.email} 
+                  onChange={handleInputChange} 
+                  required 
+                  placeholder="tu@email.com" 
+                />
                 <div className="md:col-span-2">
-                  <label className="block text-primary text-sm font-bold mb-2">¿Tienes alguna enfermedad preexistente?</label>
-                  <select
-                    name="preexistente"
-                    value={formData.preexistente}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full p-4 rounded-xl border border-primary/20 focus:border-primary focus:outline-none bg-white"
-                  >
-                    <option value="">Selecciona una opción</option>
-                    <option value="No">No</option>
-                    <option value="Sí">Sí</option>
-                  </select>
+                  <FormField 
+                    label="¿Tienes alguna enfermedad preexistente?" 
+                    name="preexistente" 
+                    type="select"
+                    value={formData.preexistente} 
+                    onChange={handleInputChange} 
+                    required 
+                    options={
+                      <>
+                        <option value="">Selecciona una opción</option>
+                        <option value="No">No</option>
+                        <option value="Sí">Sí</option>
+                      </>
+                    }
+                  />
                 </div>
               </div>
               <button
@@ -631,18 +548,16 @@ export default function MedicalInsurance() {
         </div>
       </section>
 
-      {/* Disclaimer */}
       <div className="bg-primary/5 py-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-charcoal/50 text-xs text-center font-medium">
             <AlertCircle className="inline h-4 w-4 mr-1" />
-            La información presentada es orientativa. Las condiciones exactas se establecen en la póliza которая contrato.
+            La información presentada es orientativa. Las condiciones exactas se establecen en la póliza que contrate.
             Producto comercializado por Grupo Patrimonial Mexicano (GPM), agente autorizado GNP Seguros.
           </p>
         </div>
       </div>
 
-      {/* Opciones de Contacto / Citas */}
       <section className="py-12 bg-primary">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-black text-white mb-6 text-center">¿Cómo prefieres contactarnos?</h2>
