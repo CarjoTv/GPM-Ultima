@@ -1,18 +1,35 @@
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown } from 'lucide-react';
 
-export default function FAQItem({ faq, index, openFaq, handleFaqClick }) {
+export default function FAQItem({ faq, question, answer, index, openFaq, handleFaqClick }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const q = question || faq?.question;
+  const a = answer || faq?.answer;
+  const isControlled = index !== undefined && openFaq !== undefined;
+  
+  const handleClick = () => {
+    if (isControlled) {
+      handleFaqClick(index);
+    } else {
+      setIsOpen(!isOpen);
+    }
+  };
+  
+  const isActive = isControlled ? openFaq === index : isOpen;
+  
   return (
     <div className="bg-beige rounded-2xl overflow-hidden border border-primary/5">
       <button
-        onClick={() => handleFaqClick(index)}
+        onClick={handleClick}
         className="w-full p-6 text-left flex items-center justify-between bg-primary hover:bg-lighter-navy transition-colors"
       >
-        <span className="text-white font-medium pr-4">{faq.question}</span>
-        <ChevronDown className={`h-5 w-5 text-gold shrink-0 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} />
+        <span className="text-white font-medium pr-4">{q}</span>
+        <ChevronDown className={`h-5 w-5 text-gold shrink-0 transition-transform ${isActive ? 'rotate-180' : ''}`} />
       </button>
       <AnimatePresence>
-        {openFaq === index && (
+        {isActive && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -20,7 +37,7 @@ export default function FAQItem({ faq, index, openFaq, handleFaqClick }) {
             className="overflow-hidden"
           >
             <p className="p-6 text-charcoal/70 leading-relaxed font-medium bg-beige border-t border-primary/5">
-              {faq.answer}
+              {a}
             </p>
           </motion.div>
         )}
